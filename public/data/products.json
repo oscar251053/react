@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "name": "Cheesecake",
+        "price": 29.99,
+        "description": "Un delicioso cheesecake con base de galleta.",
+        "category": "dulce",
+        "imageUrl": "/images/cheesecake.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Pan de masa madre",
+        "price": 19.99,
+        "description": "Un pan de masa madre crujiente y esponjoso.",
+        "category": "salado",
+        "imageUrl": "/images/pan.jpg"
+    },
+    {
+        "id": "3",
+        "name": "Croissant de manteca",
+        "description": "Un croissant hojaldrado y mantecoso.",
+        "price": 49.99,
+        "category": "salado",
+        "imageUrl": "/images/medialuna.jpg"
+    }
+]

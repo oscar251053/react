@@ -1,0 +1,8 @@
+.product-item img {
+  width: 200px;         /* Ajusta el ancho según tu diseño */
+  height: 200px;        /* Ajusta la altura según tu diseño */
+  object-fit: cover;    /* Recorta la imagen para que llene el espacio sin deformarse */
+  border-radius: 8px;   /* Opcional: bordes redondeados */
+  display: block;
+  margin: 0 auto 1rem auto; /* Centra la imagen y agrega espacio abajo */
+}
