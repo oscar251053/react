@@ -4,36 +4,52 @@ import { CartContext } from "./CartContext";
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
-    /* const exists = (id) => {
+    const exists = (id) => {
         const exist = cart.some((p) => p.id === id);
         return exist;
-    }; */
+    };
 
     const addItem = (item) => {
-        /* alert("El producto ya fue agregado al carrito");
         if (exists(item.id)) {
-            return;
-        } */
+            const updatedCart = cart.map((prod) => {
+                if (prod.id === item.id) {
+                    return { ...prod, quantity: prod.quantity + item.quantity };
+                }else {
+                    return prod;
+                }
+            });
 
-        setCart([...cart, item]);
-        alert(`${item.name} agregado al carrito`);
+            setCart(updatedCart);
+            alert("El producto ya fue agregado al carrito");
+        }else {
+            setCart([...cart, item]);
+            alert(`${item.name} agregado al carrito`);
+        }        
+    };
+
+    const deleteItem = (id) => {
+        const filtered = cart.filter((p) => p.id !== id);
+        setCart(filtered);
+        alert("El producto fue eliminado del carrito");
     };
 
     const clearCart = () => {
         setCart([]);
     };
-    
-    const getTotalItems = () => cart.length;
-    // const getTotalItems = () => {
-    //     if (cart.length){
-    //         return cart.length;
-    //     }
-    //
-    
 
-    //const values = { cart, addItem, clearCart, getTotalItems };
+    const getTotalItems = () => {
+        const totalItems = cart.reduce((acc, p) => acc + p.quantity, 0);
+        return totalItems;
+    };
+
+    const total = () => {
+        const total = cart.reduce((acc, p) => acc + p.price * p.quantity, 0);
+        return Math.round(total * 100) / 100;
+    };
+
+    console.log(cart);
     return (
-        <CartContext.Provider value={{ cart, addItem, clearCart, getTotalItems }}>
+        <CartContext.Provider value={{ cart, addItem, clearCart, getTotalItems, deleteItem, total }}>
             {children}
         </CartContext.Provider>
         );
