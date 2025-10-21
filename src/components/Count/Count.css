@@ -1,0 +1,13 @@
+.count-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    gap: 10px;
+}
+.count-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
