@@ -47,9 +47,16 @@ export const CartProvider = ({ children }) => {
         return Math.round(total * 100) / 100;
     };
 
-    console.log(cart);
+    const checkout = () => {
+        const ok = confirm ("¿Desea finalizar la compra?");
+        if (ok) {
+            clearCart();
+            alert("Gracias por su compra");
+        }
+    }
+
     return (
-        <CartContext.Provider value={{ cart, addItem, clearCart, getTotalItems, deleteItem, total }}>
+        <CartContext.Provider value={{ cart, addItem, clearCart, getTotalItems, deleteItem, total, checkout }}>
             {children}
         </CartContext.Provider>
         );
