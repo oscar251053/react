@@ -1,8 +1,43 @@
+.product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  box-sizing: border-box;
+  padding: 0;
+  height: 50vh;    /* altura máxima del ítem */
+  overflow: hidden; /* evita desbordes */
+}
 .product-item img {
-  width: 200px;         /* Ajusta el ancho según tu diseño */
-  height: 200px;        /* Ajusta la altura según tu diseño */
-  object-fit: cover;    /* Recorta la imagen para que llene el espacio sin deformarse */
-  border-radius: 8px;   /* Opcional: bordes redondeados */
-  display: block;
-  margin: 0 auto 1rem auto; /* Centra la imagen y agrega espacio abajo */
+  width: 100%;
+  max-width: 360px;              /* ancho máximo razonable */
+  height: 45%;
+  max-height: 60vh;              /* nunca ocupar más del 60% de la altura de la ventana */
+  object-fit: contain;           /* mantiene la proporción sin recortar */
+  border-radius: 8px;
+  margin: 0;
+}
+.product-item h2 {
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.product-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* ajusta en móviles */
+@media (max-width: 420px) {
+    .product-item {
+        height: 45vh; /* reduce altura en móviles */
+    }
+    
+    .product-item img {
+        max-width: 90%;
+        height: 40%;
+    }
 }

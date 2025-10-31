@@ -1,18 +1,36 @@
 .item-list-container {
-    width: 100%;
-    text-align: center;
-    margin: 2rem;
-}
-.btn-container {
-    width: 100%;
-    margin-top: 2rem;
     display: flex;
-    justify-content: center;
-    gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
 }
+.item-list-container .cart-items{
+    display: flex;
+    flex-wrap: wrap; /* Permite que se acomoden a la siguiente fila si hay muchos */
+    justify-content: center; /* Centra horizontalmente */
+    gap: 1rem; /* Espacio entre los productos */
+}
+.cart-items .item{
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 250px;
+    text-align: center;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column; /* uno debajo del otro */
+    align-items: center;    /* centra horizontalmente */
+    justify-content: center;/* centra verticalmente si tiene altura */
+    gap: 1rem;              /* espacio entre los botones */
+    margin-top: 2rem;
+}
+
 .total-pagar {
-    width: 100%;
-    text-align:left;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 .btn {
     margin-left: 15px;

@@ -10,14 +10,16 @@ export const Cart = () => {
             <h2>Carrito de Compras</h2>
 
             {cart.length ? (
-                cart.map((prod) => (
-                    <Item key={prod.id} {...prod}>
-                        <span>Cantidad: {prod.quantity}</span>
-                        <button className="btn" onClick={() => deleteItem(prod.id)}>
-                            Eliminar
-                        </button>
-                    </Item>
-                ))
+                <div className="cart-items">
+                    {cart.map((prod) => (
+                        <Item key={prod.id} {...prod}>
+                            <span>Cantidad: {prod.quantity}</span>
+                            <button className="btn" onClick={() => deleteItem(prod.id)}>
+                                Eliminar
+                            </button>
+                        </Item>
+                    ))}
+                </div>
             ) : (
                 <p>El carrito está vacío</p>
             )}

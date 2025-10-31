@@ -4,10 +4,32 @@
     align-items: center;
     justify-content: center;
     font-family: Arial, sans-serif;
-    gap: 10px;
+    gap: 1rem;
 }
 .count-buttons {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 2rem;
+}
+span {
+    font-size: 1.2rem;
+    min-width: 2rem;
+    text-align: center;
+    margin-left: 10px;
+}
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-add {
+    width: 100%;        /* Hace que el botón de agregar tome todo el ancho */
+    margin-top: 0.5rem; /* Espacio arriba del botón de agregar */
 }
