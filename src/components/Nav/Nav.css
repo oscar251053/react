@@ -2,7 +2,8 @@ nav {
     width: 100%;
     display: flex;
     justify-content: center; /* Centra horizontalmente el ul */
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    padding: 1rem 0;
 }
 
 nav ul li a {
@@ -31,14 +32,10 @@ nav li {
 }
 
 .in-cart {
-    background-color: red;
+    background-color: rgb(1, 32, 10);
     font-size: 0.75rem;
     font-weight: bold;
-    border-radius: 50%;
-    padding: 0.25em 0.5em;
-    display: inline-block;
-    min-width: 20px;
-    text-align: center;
-    margin-left: 0.25rem;
+    border-radius: 5px;
     color: white;
+    border: 2px solid rgb(1, 32, 10);
 }

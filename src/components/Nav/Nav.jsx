@@ -17,10 +17,11 @@ export const Nav = () => {
                 </li>
                 <li>
                     <Link to={"/carrito"}>Carrito</Link>
-                </li>
+                {/* </li> */}
                 {getTotalItems() > 0 && (
-                    <span className="in-cart">{getTotalItems()}</span>
-                )}
+                    <span className="in-cart">{getTotalItems()}</span>)}
+                </li>
+                {/* )} */}
             </ul>
         </nav>
     );

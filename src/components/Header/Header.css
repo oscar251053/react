@@ -1,5 +1,18 @@
 .logo-link {
-    color: rgb(246, 245, 247);
-    text-decoration: none;
-    margin-left: 20px;  /* Ajusta este valor según necesites */
+  /* Define un borde: grosor | estilo | color */
+    border: 1px solid rgb(127, 167, 167); 
+  /* Opcional: mejora la apariencia */
+    padding: 0;/* Espacio entre la imagen y el borde */
+    border-radius: 4px; /* Esquinas ligeramente redondeadas */
+    background-color: rgb(10, 10, 100);
+    margin-right: 40px;
+}
+.logo-link:hover {
+    background-color: rgb(0, 65, 139);
+    border: 1px solid rgb(0, 65, 139);
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -28,15 +28,17 @@ export const Cart = () => {
                     <div className="total-pagar">
                         <p>Total a pagar: ${total()}</p>
                     </div>
-                    <button className="btn2" onClick={checkout}>
-                        Finalizar Compra
-                    </button>
-                    <button className="btn2" onClick={clearCart}>
-                        Vaciar Carrito
-                    </button>
+                    < div className="action-buttons">
+                        <button className="btn2" onClick={checkout}>
+                            Finalizar Compra
+                        </button>
+                        <button className="btn2" onClick={clearCart}>
+                            Vaciar Carrito
+                        </button>
+                    </div>
                 </div>
             ):(
-                <Link to="/" className="btn">
+                <Link to={"/"} className="btn">
                     Volver al Inicio
                 </Link>
             )}
