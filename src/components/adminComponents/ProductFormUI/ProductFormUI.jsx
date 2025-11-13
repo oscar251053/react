@@ -1,12 +1,13 @@
 import './ProductFormUI.css';
 
 
-export const ProductFormUI = ({product, errors, loading, onSubmit, onChange, onFileChange}) => {
+export const ProductFormUI = ({product, errors = {}, loading, onSubmit, onChange, onFileChange, fileInputRef}) => {
 
     return (
         <section>
             <form className="product-form" onSubmit={onSubmit} noValidate>
                 <h2>Agregar Producto</h2>
++                {errors.general && <p className="error">{errors.general}</p>}
                 <div>
                     <label>Nombre:</label>
                     <input
@@ -54,6 +55,7 @@ export const ProductFormUI = ({product, errors, loading, onSubmit, onChange, onF
                 <div>
                     <label>Imagen:</label>
                     <input
+                        ref={fileInputRef}
                         type="file"
                         name="image"
                         accept="image/*"

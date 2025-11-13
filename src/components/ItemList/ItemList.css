@@ -1,6 +1,7 @@
 .item-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* display: grid;
+    grid-template-columns: repeat(3, 1fr); */
+    display: flex;
     gap: 20px;
     padding: 20px;
     max-width: 1200px;

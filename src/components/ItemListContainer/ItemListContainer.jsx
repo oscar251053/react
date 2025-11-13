@@ -1,13 +1,19 @@
 import { ItemList } from "../ItemList/ItemList";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getProducts } from "../../services/products";
+import "./ItemListContainer.css";
 
 export const ItemListContainer = ({titulo}) => {
   const [products, setProducts] = useState([]);
   const {category} = useParams();
 
   useEffect(() => {
-    fetch('/data/products.json')
+    getProducts(category)
+      .then((data) => setProducts(data))
+      .catch((err) => console.log(err));
+  }, [category]);
+    /* fetch('/data/products.json')
     .then((res) => {
       if(!res.ok){
         throw new Error('Error al cargar los productos');
@@ -20,16 +26,12 @@ export const ItemListContainer = ({titulo}) => {
       } else {
       setProducts(data);
       }
-    })
-    .catch(err => {
-      console.log(err);
-    });
-  }, [category]);
+    }) */
     
   return (  
     <section>
       <h2>{titulo}</h2>
-      <ItemList lista={products} />
+      <ItemList  className="categoria" lista={products} />
     </section>
   );
 };

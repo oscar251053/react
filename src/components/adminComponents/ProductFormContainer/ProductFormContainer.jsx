@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { ProductFormUI } from '../ProductFormUI/ProductFormUI';
 import { validateProducts } from '../../../utils/validateProducts';
 import {uploadToImgbb} from '../../../services/uploadImage'
-//import { createProduct } from '../../../services/products';
+import { createProduct } from '../../../services/products';
 import "../ProductFormContainer/ProductFormContainer.css"
 
 export const ProductFormContainer = () => {
-    const [loading, setLoading] = useState();
-    const [errors, setErrors] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [errors, setErrors] = useState({});
     const [file, setFile] = useState(null)
+    const fileInputRef = useRef(null);
     const [product, setProduct] = useState({
     name: '',
     price: "",
@@ -33,14 +34,18 @@ export const ProductFormContainer = () => {
         }
 
         try {
-            const imageUrl = await uploadToImgbb();
+            const imageUrl = await uploadToImgbb(file);
             const productData = {...product, price: Number(product.price), imageUrl};        
 
         await createProduct(productData);
         alert('Producto creado con éxito');
 
-        setProduct({name: '', price: 0, category: '', description: ''});
+        setProduct({name: '', price: '', category: '', description: ''});
         setFile(null);
+        // resetear el input de archivo manualmente
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
 
         } catch (error) {
             setErrors({general: error.message});
@@ -53,6 +58,7 @@ export const ProductFormContainer = () => {
         product={product}
         onChange={handleChange}
         onFileChange={setFile}
+        fileInputRef={fileInputRef}
         loading={loading}
         errors={errors}
         onSubmit={handleSubmit}
