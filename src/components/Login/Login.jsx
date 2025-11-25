@@ -2,11 +2,13 @@
 import { useState } from "react";
 import { useAuthContext } from "../Context/useAuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useNotification } from '../Context/NotificationContext/NotificationContext';
 import "./Login.css";
 
 export const Login = () => {
     const [userForm, setUserForm] = useState({name: '', password: ''});
     const {user, login } = useAuthContext();
+    const { notify } = useNotification();
 
     const navigate = useNavigate();
     
@@ -20,7 +22,7 @@ export const Login = () => {
         if(success){
             navigate("/admin/alta-productos");
         }else{
-            alert("Credenciales inválidas");
+            notify("Credenciales inválidas", "error");
         }
         setUserForm({name: '', password: ''});
     };

@@ -12,7 +12,21 @@ export const ItemListContainer = ({titulo}) => {
     getProducts(category)
       .then((data) => setProducts(data))
       .catch((err) => console.log(err));
-  }, [category]);    
+  }, [category]);
+    /* fetch('/data/products.json')
+    .then((res) => {
+      if(!res.ok){
+        throw new Error('Error al cargar los productos');
+      }
+      return res.json();
+    })
+    .then(data => {
+      if(category){
+        setProducts(data.filter(prod => prod.category === category));
+      } else {
+      setProducts(data);
+      }
+    }) */
     
   return (  
     <section>

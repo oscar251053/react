@@ -1,8 +1,10 @@
 import { useState } from "react";
 import {AuthContext} from "./AuthContext";
+import { useNotification } from './NotificationContext/NotificationContext';
 
 
 export const AuthProvider = ({ children }) => {
+    const { notify } = useNotification();
     const [user, setUser] = useState(() => {
         const saved = sessionStorage.getItem("session");
             if (saved) {
@@ -23,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     const logout = () => {
         setUser(null);
         sessionStorage.removeItem("session");
-        alert("Cerrando sesión");
+        notify("Sesión cerrada", "info")
     }
 
     return <AuthContext.Provider value={{ user, login, logout }}>

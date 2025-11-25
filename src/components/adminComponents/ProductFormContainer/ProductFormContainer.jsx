@@ -1,11 +1,13 @@
 import { useState, useRef } from 'react';
 import { ProductFormUI } from '../ProductFormUI/ProductFormUI';
 import { validateProducts } from '../../../utils/validateProducts';
-import {uploadToImgbb} from '../../../services/uploadImage'
+import { uploadToImgbb} from '../../../services/uploadImage'
 import { createProduct } from '../../../services/products';
+import {useNotification} from '../../Context/NotificationContext/NotificationContext'
 import "../ProductFormContainer/ProductFormContainer.css"
 
 export const ProductFormContainer = () => {
+    const { notify } = useNotification();
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
     const [file, setFile] = useState(null)
@@ -38,7 +40,7 @@ export const ProductFormContainer = () => {
             const productData = {...product, price: Number(product.price), imageUrl};        
 
         await createProduct(productData);
-        alert('Producto creado con éxito');
+        notify('Producto creado con éxito');
 
         setProduct({name: '', price: '', category: '', description: ''});
         setFile(null);

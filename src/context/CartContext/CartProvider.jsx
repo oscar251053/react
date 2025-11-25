@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { CartContext } from "./CartContext";
+import { useNotification } from "../../components/Context/NotificationContext/NotificationContext";
+
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
-
+    const { notify, confirm } = useNotification();
     const exists = (id) => {
         const exist = cart.some((p) => p.id === id);
         return exist;
@@ -20,21 +22,22 @@ export const CartProvider = ({ children }) => {
             });
 
             setCart(updatedCart);
-            alert("El producto ya fue agregado al carrito");
+            notify("El producto ya fue agregado al carrito", "info");
         }else {
             setCart([...cart, item]);
-            alert(`${item.name} agregado al carrito`);
+            notify(`${item.name} agregado al carrito`, "success");
         }        
     };
 
     const deleteItem = (id) => {
         const filtered = cart.filter((p) => p.id !== id);
         setCart(filtered);
-        alert("El producto fue eliminado del carrito");
+        notify("El producto fue eliminado del carrito", "error");
     };
 
     const clearCart = () => {
         setCart([]);
+        notify("El carrito fue vaciado", "error");
     };
 
     const getTotalItems = () => {
@@ -47,11 +50,12 @@ export const CartProvider = ({ children }) => {
         return Math.round(total * 100) / 100;
     };
 
-    const checkout = () => {
-        const ok = confirm ("¿Desea finalizar la compra?");
+    const checkout = async () => {
+        const ok = await confirm ("¿Desea finalizar la compra?");
         if (ok) {
             clearCart();
-            alert("Gracias por su compra");
+            notify("Gracias por su compra", "success");
+            
         }
     }
 

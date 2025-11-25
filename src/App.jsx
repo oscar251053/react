@@ -6,8 +6,8 @@ import { ItemListContainer } from "./components/ItemListContainer/ItemListContai
 import { CartProvider } from "./context/CartContext/CartProvider";
 import { Cart } from "./components/Cart/Cart";
 import "./App.css";
-import { MainLayout } from "./Layouts/MainLayout";
-import {AdminLayout} from "./Layouts/AdminLayout";
+import { MainLayout } from "./layouts/MainLayout";
+import {AdminLayout} from "./layouts/AdminLayout";
 import { ProductFormContainer } from "./components/adminComponents/ProductFormContainer/ProductFormContainer";
 import { Login } from "./components/Login/Login";
 import { RutaProtegida } from "./components/RutaProtegida/RutaProtegida";
